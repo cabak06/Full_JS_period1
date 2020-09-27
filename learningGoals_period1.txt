@@ -1,0 +1,167 @@
+-The difference between COMPILED and SCRIPTED languages:
+COMPILED languages (source-code is compiled to machine code and the copy of the machine code is transferred to the client). The client doesn't have access to the sourcecode.
+SCRIPTED languages (source-code is sent entirely as it is to the client which then interprets/reads the code line by line)
+
+Pros/cons.. COMPILED languages (protects its sourcecode/data, but can be difficult to run on a corssplatform scale, because of differences in architecture(processors), hardware and OS-systems. it is also harder to debug it as you dont have access to the source code.)  
+
+
+-Java as a language and a PLATFORM *:
+* 1) It has an execution engine (JVM - java virtual machine), that provides runtime environment (JRE) to run the code --> this includes components such as user-interfaces, servers and agents
+* 2) It has its own libraries
+
+
+Blocking vs non-Blocking:
+BLOCKING: (SYNCHRONOUS) refers to operations that block further execution untill operation has finished.
+non-BLOCKING: (A'SYNCHRONOUS) refers to operations that aren't blocking further execution of the program, while it processess the required 'requests'
+
+
+-NODE-JS: 
+Is a runtime-environment for executing JS code outside of a browser.. By using chrome V8 engine embedded in a c++ program.
+Node is ideal for building highly-scalable (it can handle large increase in users/load/requests), data intensive(Input/Output bound, often communication between system and humans) and real-time (monitoring dynamic interactions) apps
+Paypal as a case: Built twice as fast,fewer codelines, 2X request/sec, faster responsetime
+NPM (node package manager)is the default package manager for Node. Most commonly, it is used to publish, discover, install, and develop node programs.
+
+-EventLoop:
+This is a constantly running process that checks if the call stack is empty. If empty, it looks into the task queue. If there is something in the task queue that is waiting, it is moved to the call stack.
+Call stack: JS has a single call stack as JS is single threaded. It is a datastructure which records where in the program we are.
+If you run asynchronous calls in JS, the call is placed in webAPI's and therefore not blocking the stack. When the call is ready, the wepAPI push the call to the task queue.
+IMPORTANT: There is a need for operating with asynchronous calls as we dont want to block user interfaces. We might also need some data in order to process other data without, again blocking the stack. 
+
+JavaScript Engines:
+Edge (Chakra), FireFox (spider monkey), Chrome (V8). 
+JavaScript RunTime environments:
+(Chrome v8 = node.js runtime), (Spider Monkey: The Mozilla JavaScript runtime)
+Is a computer program that executes JavaScript code. JavaScript engines are typically developed by web browser vendors, and every major browser has one.
+
+
+Webpack:
+Is a module bundler for JS Apps. When webpack processes your application, it builds a dependency graph which maps every module your project needs and generates one or more bundles.
+Entry - indicates which module webpack should use to begin building out its internal dependency graph.
+Output -  where to emit the bundles it creates.
+Loaders - allows you to transform files before they are added to your bundle. (examp babel)
+Plug-ins - is applied on your bundle before 'output' (exampel: diminification feature)
+Babel is a JS-transpiler that is used to turn ES6+ code into ES5 friendly code.
+(code example: Period1, week 4)
+
+
+
+***********************
+Features in JavaScript:
+HOISTING: is a mechanism where variables (only VAR) and function declarations are 'lifted' up to the top of their scope before code execution.
+THIS:
+-If that function is part of an object -> we call the function a method. so if that function is a method in an object, this references the object itself.
+-If that function is a regular function, which means it is not part of an object, this references to a global object,(window objects in browsers and global object in node).
+Implicit Binding --> By looking at the left side of the dot at call time, you can determine
+what this refers to. EX. myObject.getThis();
+Explicit Binding --> .call , .apply & .bind. When the function is not part of the object but is part of the global scope, you can call it with the keyword call.
+the keyword call passes the arguments one by one,
+the keyword apply passes the arguments as an array,
+the keyword bind binds/creates a new function, where the 'old' function is parsed into the new one.
+New Binding --> Advocates the usage of new keyword as a constructor.
+
+CLOSURES:
+Is a special kinf of object that involves a function and the environment in which the function was created. The environment consists of any local variables that were in-scope at the time the closure was created. (inner function has access to outer function environment)
+
+USER-DEFINED CALLBACK-FUNCTIONS:
+A callback function is a function passed into another function as an argument which is then runned inside of the function it was passed to (hint: period 1, week1);
+
+MAP/FILTER/REDUCE:
+.map() is an array method that:(takes an array, applies the function to every element in the array --> manipulate each element, returns new array)
+.filter() is an array method that(takes an array, applies the function to every element in the array-->if condition is met('true'),returns new array with 'true' values)
+.reduce() is an array method that(takes an array, executes a reducer function(accumulator,currrentValue,currentIndex,sourceArray) on each element of the array --> returns the accumulated result)
+They all take a callback as a parameter, like forEach(), filter(), map(), reduce().
+
+EXAMPLES OF USER-DEFINED REUSABLE MODULES IMPLEMENTED IN NODE-JS (LEARN'Y-NODE -6):
+Hint: period 1, week1, learnynode (MAKE IT MODULAR (Exercise 6 of 13)).
+
+ES2015:
+VAR: creates function-scoped variables (VAR is not restricted in the local scope but is accessable inside the whole function). VAR can generate a lot of confusion, ex:
+function count(){
+    for(var i = 0; i < 5; i++){
+        console.log(i);
+    }
+    console.log(i); // i = 5
+}
+LET,CONST are in contrast block-scoped... Might be better to use.
+
+ARROW FUNCTIONS: 
+Always anonymous (no name), can't be hoisted due to being anonymous 
+Doesnt have their own 'this', in forexample an object method, as they dont bind this to the object that called them.They rather bind this to the global object in stead of.
+They are often used as callback functions as callback functions can be anonymous
+Function expressions are best for object methods.Arrow functions are best for callbacks or array methods such as map,reduce,foreach,filter etc.
+
+REST PARAMETER: 
+is collecting all remaining elements into an array. fx -->
+func(...args){}; --> func(1,2,3,4) --> result = [1,2,3,4]
+
+SPREAD OPERATOR: 
+is unpacking collected elements such as arrays into single elements . fx -->
+n1 = [1,2], n2 = [...n1,5,6] --> result = [1,2,5,6];
+
+DESTRUCTURING OBJECTS AND ARRAYS:
+Destructuring makes it possible to unpack values from arrays, or properties from objects, into distinct variables. That is, we can extract data from arrays and objects and assign them to variables.
+
+EVENT-BASED CODE:
+An Event is a signal that indicates that something has happened in our application. fx if 
+the webserver receives a request, an event is raised which must be handled(responded to) by the eventhandler. The Events module is required, (ie. the EventEmitter class).
+//Raising an event
+We use the .emit("name of the event", Additional arguments) method to signal/raise that an event has happened.
+//Listening for an event
+We use the .on("name of the event",callback function) method to handle the event.
+A listener is a function that will be called when an event has been raised.
+IMPORTANT: The order is important, listener must be registered before event is raised.
+HINT: (Period 1, week3)
+
+
+ES6,7,8,ES-NEXT AND TYPESCRIPT:
+
+EXAMPLES WITH ES-NEXT USING BABEL AND WEBPACK:
+HINT: (Period1,week4,node_with_babel --> index.js(promise.any))
+
+
+THE TWO STRATEGIES FOR IMPROVING JAVASCRIPT: BABEL AND ES6 (ES-NEXT), VERSUS TYPESCRIPT:
+BABEL: Is a transpiler tool used to convert ES6 (ECMAScript 2015) or above version code into a backward compatible version (ES5) of JavaScript that can run in any browser along with older one.It is a popular tool for using the latest features of the JavaScript programming language.
+TYPESCRIPT: Is an open-source object-oriented language. It is a superset of JavaScript which compiles to plain JavaScript. Like babel it adds support to the different features present in ECMAScript (maintained by the a TC39 committee of the ECMA group).
+
+BENEFITS OF TYPESCRIPT:
+TYPES: 
+JavaScript has no types, so it’s hard to control all the parameters and variables that we are using and validate them.. this often lead to code-break in runtime. TypeScript operates with types and makes our code easier to read and while at the same time helps us detect errors before runtime.
+INTERFACE:
+Interface is a structure that defines the 'contract' in your application. It defines the syntax for classes to follow. IMPORTANT: The TypeScript compiler does not convert interface to JavaScript. It uses interface for type checking (also known as "duck typing").
+CLASS:
+TypeScript operates with the benefit of object-oriented techniques like encapsulation and abstraction. The class in TypeScript is compiled to plain JavaScript functions by the TypeScript compiler to work across platforms and browsers.
+GENERICS:
+Generics are basically a kind of tool that enables you to create reusable code components that work with a number of types instead of a single type.It follows the DRY principle very well as code can be reused with different parameters (logic is the same --> generics let you write a generalized form of method)
+HINT:(Period1, week5)
+
+
+
+CALLBACKS,PROMISES AND ASYNC/AWAIT:
+
+Promises are a way to implement async programming in JavaScript(ES6), and avoiding the nested callbacks (callback-Hell). A Promise is basically created when we are unsure of whether or not the assigned task will be completed. The Promise object represents the eventual completion (or failure) of an async(asynchronous) operation and its resulting value. A Promise is either kept or broken.
+A Promise is always in one of the following states:
+FULFILLED: --> Action related to the promise succeeded.
+REJECTED: --> Action related to the promise failed.
+PENDING: --> Promise is still pending i.e not fulfilled or rejected yet.
+Async/promised base code serial/seq --> HINT: (period1, week3, --> crypto_with_async.js, or (ex3.js))
+Async/promised based code parallel --> HINT: (period1, week3 --> crypto_with_promises.js) ex.3.js
+ERROR HANDLING: --> HINT: period1, week3 (ex2_starwars.js, exercise3.js)
+
+
+
+ASYNC/AWAIT: 
+
+An async function can contain an await expression, that pauses the execution of the function and waits for the passed Promise's resolution, and then resumes the async function's execution and returns the resolved value. ... The purpose of async/await is to simplify the behavior of using promises, and leads to:
+Basic syntax (better readable code 'syntactical sugar')
+Basic overview makes debugging easier.
+Basic try/catch block handles a rejected promise.
+
+
+
+
+
+
+
+
+
+
