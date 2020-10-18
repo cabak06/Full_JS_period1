@@ -88,7 +88,7 @@ Array.prototype.myMap = function(callback){
     return temp;
 };
 
-console.log(mapNumbers.myFilter((number) => (number < 5)));
+console.log(mapNumbers.my((number) => (number < 5)));
 console.log(mapNumbers.myMap((number) => (number > 5)));
 
 
@@ -181,6 +181,6 @@ var makeCounter = function() {
     module.exports = makeCounter;
 
     
-    // Mangler opgave og opgave2/3 i closures.
+    
 
     
