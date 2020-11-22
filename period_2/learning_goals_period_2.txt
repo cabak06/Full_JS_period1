@@ -1,0 +1,195 @@
+Learing Goals Period 2
+
+#Explain Pros & Cons in using Node.js + Express to implement your Backend compared to a strategy using, for example, Java/JAX-RS/Tomcat?
+
+pros:
+-Same language in both frontend and backend: (JavaScript everywhere)
+-Faster and easier development: 
+Node.js has an easier learning curve than Java, so getting started is easier and quicker. (Node.js takes apprx. 33 percent fewer lines in development of apps than ,example Java, ( this is also mentioned in learning goals for period 1)
+-Information sharing/integration: 
+Using the same language makes it easier/smoother for team-members and outsiders to engange and understand your code.
+-Extensive code-reuse (DRY)
+Using same language in front/backend can save you time a and efforts by sharing the same code, libraries etc in terms of logic and implementation.
+-Knowledge Base: 
+Node.js has a powerful and fast growing community (ensures the continious development of Node.js friendly technologies)
+-Handling Real-Time Apps (I/O intensive ,example chat-apps or online-gaming)
+
+cons:
+Java is good at handling CPU heavy tasks. Though Node.js does operate with an async event model, by nature, it is single threaded. So heavy computations may have a slowing effect of speed and performance.
+-Lack of Library-Support:
+The fact that it is open-source with such a pool of libraries and modules might create a lack of high coding standards.
+
+
+
+#Explain the difference between Debug outputs and ApplicationLogging. What’s wrong with console.log(..) statements in our backend code.
+
+-Application logging:
+Is a file that contains information about events that have occurred within a software application. These events are logged out by the application and written to the file. They can include errors and warnings as well as informational events.
+Debug outputs vs console.log():
+- They are nearly the same but console.logs blocks as it doesnt run asynchronous. so it is preferable to operate with debug()
+
+
+#Demonstrate a system using application logging and environment controlled debug statements.
+...Examples will be updated soon
+
+
+#Explain, using relevant examples, concepts related to testing a REST-API using Node/JavaScript/Typescript + relevant packages 
+
+-I have used mocha and chai to test REST-API in node.js.
+-Mocha: is a javascript framework for Node.js which also allows for Asynchronous testing. In other words, it provides the environment in which we can assertion libraries to test the code.
+-Chai: is an assertion library that is often used alongside Mocha. It provides functions and methods that help you compare the output of a certain test with its expected value.
+Examples will be updated soon...
+-Integrating typescript with javascript ensures that a lot of errors will be detected easier due to typescript's type sensitive character.
+
+#Explain a setup for Express/Node/Test/Mongo-DB development with Typescript, and how it handles "secret values",  debug and testing.
+
+setup:
+primarily based on your package.json file and tscconfig.json file (for typescript)
+dependencies:
+express, chai, mocha, typescript
+Express. js is a Node js web application server framework (Express is the backend)
+Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine
+Secret values are handled via .env file where you don't push those values up to production mode.
+
+
+
+#Explain, using relevant examples, the Express concept; middleware.
+
+-Middleware means anything you put in the middle of one layer of the software and another. Express middleware are functions that execute during the lifecycle of a request to the Express server. Each middleware has access to the HTTP request and response for each route (or path) it’s attached to. Additionally, middleware can either terminate the HTTP request or pass it on to another middleware function using "next". This “chaining” of middleware allows you to create reusable middleware
+Examples will be updated soon..
+
+ 
+#Explain, using relevant examples, your strategy for implementing a REST-API with Node/Express  + TypeScript and demonstrate how you have tested the API.
+
+-I am basically using express middleware (app.use) from my app.ts file to "walk-through" (the needed) REST-API files. This is realised via the express.Router module. I have tested the endpoints using Mocha framework and chai assertion library. The data used for testing is generated via some mock objects (before (insert mock data), after(nuke it)).
+examples will be updated soon...
+
+
+#Explain, using relevant examples, how to test JavaScript/Typescript Backend Code, relevant packages (Mocha, Chai etc.) and how to test asynchronous code.
+
+-By using assertions from the Chai Library and framework from Mocha module, we are build a test-suit in a given test file, and point to that file in the package.json file. From here, we can expect the results we want, inside a describe method callback. For async code, we can either make the callbacks themselves async, or we can expect(value).to.eventually.have.property from Chai as Promised.
+
+
+#Explain, generally, what is meant by a NoSQL database.
+
+-when using a relational database (such as SQL), you have to have an understanding of the structure and schemes of the data before writing text into it. 
+-A NoSQL database, on the other hand, is characterized by the fact that you can plot unstructured data to be stored and managed. 
+
+
+#Explain Pros & Cons in using a NoSQL database like MongoDB as your data store, compared to a traditional Relational SQL Database like MySQL.
+
+-pros
+-you can create documents without first having to define their structure
+-easy writes, you can write unstructured data to be stored and managed in the database.
+-In most situations, SQL databases are vertically scalable, which means that you can increase the load on a single server by increasing things like CPU, RAM or SSD. NoSQL databases, on the other hand, are horizontally scalable. This means that you handle more traffic by adding more servers in your NoSQL database.
+
+-cons
+-can be difficult to make effective and beneficient "read" operations, as data can be unstructured.
+-not an ideal choice for the complex query intensive environment, where data validity is very important.
+
+
+
+NoSQL and MongoDB
+
+#Explain about indexes in MongoDB, how to create them, and demonstrate how you have used them.
+
+-Indexes are used to quickly locate data without having to search every row in a database table every time a database table is accessed.
+-In short: Good Indexes, Fast Queries; Poor Indexes, Slow Queries.
+
+INDEXES USED IN MY PROJECT:
+-Geospatial Index:
+To support efficient queries of geospatial coordinate data, MongoDB provides two special indexes: 2d indexes that uses planar geometry when returning results and 2dsphere indexes that use spherical geometry to return results.
+-TTL Indexes:
+TTL indexes are special single-field indexes that MongoDB can use to automatically remove documents from a collection after a certain amount of time or at a specific clock time.
+-Unique Indexes:
+A unique index ensures that the indexed fields do not store duplicate values; i.e. enforces uniqueness for the indexed fields. By default, MongoDB creates a unique index on the _id field during the creation of a collection.
+-Ezamples will be updated soon....
+
+
+#Explain, using your own code examples, how you have used some of MongoDB's "special" indexes like TTL and 2dsphere and perhaps also the Unique Index.
+-Examples will be updated soon....
+
+
+#Demonstrate, using a REST-API designed by you, how to perform all CRUD operations on a MongoDB
+-Examples will be updated soon....
+
+
+
+#Explain, using a relevant example, a full JavaScript backend including relevant test cases to test the REST-API (not on the production database).
+
+-To test for the mongoDB all the way from our own REST-api, we need to set up a testing port to test from, and preferably communicate with a test Collection within our MongoDB, so we don’t affect any real data.
+
+
+GeoLocation and Geojson:
+
+#Explain and demonstrate basic Geo-JSON, involving as a minimum, Points and Polygons
+
+-GeoJSON is an open standard format designed for representing simple geographical features. It is based on the JSON format.
+-POINT: represents a single point(spot) in a geographical sphere. It is an object that takes two parametres (longitude, latitude). IMPORTANT, the ordering of parametres is fixed but must often be reversed depending on the api used.
+
+{
+    "type": "Point", 
+    "coordinates": [30, 10]
+}
+
+-POLYGON: is as the same suggest an area-representaion. It may have holes inside it (empty areas "arrays inside array"), and is represented as an array with matching first and last points.
+
+{
+    "type": "Polygon", 
+    "coordinates": [
+        [[35, 10], [45, 45], [15, 40], [10, 20], [35, 10]], 
+        [[20, 30], [35, 35], [30, 20], [20, 30]]
+    ]
+}
+
+-Examples will be updated soon...
+
+
+
+#Explain and demonstrate ways to create Geo-JSON test data.
+- I have used the api in http://geojson.io to generate test data.
+Examples will be updated soon...
+
+
+#Explain the typical order of longitude and latitude used by Server-Side APIs and Client-Side APIs.
+
+- The Geo-Json we use is characterized by order: [longitude,latitude],
+but most api’s uses the reverse order: [latitude,longitude].
+
+
+#Explain and demonstrate a REST API that implements geo-features, using a relevant geo-library and plain JavaScript
+- To be updated...
+
+
+To be Updated....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
