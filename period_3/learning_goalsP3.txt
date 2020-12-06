@@ -1,0 +1,51 @@
+Learning Goals period 3
+
+# Explain Pros & Cons with React Native + Expo used to implement a Mobile App for Android and IOS, compared to using the Native Tools/languages for the two platforms.
+
+Pros:
+-It is kind of an extension to ReactNative, offers tons of components and libraries already included all to facilitate the development of mobile apps with React Native.
+-Easy to use (for not heavily-customized apps, ready-solutions)
+-Immediate results
+-Everything is covered by Expo
+-Nice documentation from Getting started to all API Docs
+-Live reload while in development
+
+Cons:
+-Native modules not supported
+-By the need of heavy-customization, you might hit a dead-end (not be able to develop your app more than the ready-solutions that exist in expo)
+
+
+# What is meant by the React Native Paradigm "Learn once, write anywhere" compared to for example the original (now dead) idea with Java "Write Once, run everywhere".
+
+-"Write Once, run everywhere": (Java-Paradigm), when compiled, creates a bytecode (.class file), which can be run in any machine which supports JVM. So once compiled it doesn’t require re-compilation at every machine it runs, JVM converts the bytecode to be understood by the underlying hardware.
+
+-"Learn once, write anywhere": Developing a consistent set of tools and technologies, that enables building apps using same set of principles across different platforms. So you can build an IOS app and the day after, you can build an Andriod app just by using fx "react".
+
+
+# In React Native, which parts of your code gets compiled to Native Code (Widgets) and which parts do NOT?
+Components compiled to "widgets".
+-We build normal react components using JS. But we render it not using HTML tags (no div's, p's etc). Instead we use "View" components, which is compiled to native widgets/code.
+
+
+# Explain and demonstrate ways to handle User Input in a React Native Application
+# Explain and demonstrate how to handle state in a React Native Application.
+-Example (day1, period 3 "Goal_example")
+- By using hooks from react (usestate) and textinput feature from react-native you can handle user-input and state.
+
+
+# Explain and demonstrate how to communicate with external servers, in a React Native Application
+-Example (day2, period 3 "geobackend and geoclient")
+
+
+# Explain and demonstrate how to use Native Device Features in a React Native/Expo app.
+-Example (day2, period 3 "geobackend and geoclient")
+
+# Explain and demonstrate a React Native Client that uses geo-components (Location, MapView, etc.)
+-Example (day2, period 3 "geobackend and geoclient")
+
+# Demonstrate both server and client-side, of the geo-related parts of your implementation of the ongoing semester case.
+-Example (day2, period 3 "geobackend and geoclient")
+
+
+
+
